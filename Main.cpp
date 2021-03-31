@@ -9,6 +9,8 @@
 
 CMRC_DECLARE(fonts);
 
+#define GL_SILENCE_DEPRECATION
+
 // Global constants
 static const int num_params = 18;
 static const int iters = 800;
@@ -174,11 +176,7 @@ static void MakeTText(double t) {
 static void CreateRenderWindow(sf::RenderWindow &window) {
   // GL settings
   sf::ContextSettings settings;
-  settings.depthBits = 24;
-  settings.stencilBits = 8;
-  settings.antialiasingLevel = 8;
-  settings.majorVersion = 3;
-  settings.minorVersion = 0;
+  settings.antialiasingLevel = 4;
 
   // Create the window
   const sf::VideoMode screenSize(window_w, window_h, window_bits);
@@ -303,7 +301,7 @@ int main(int argc, char *argv[]) {
   // Main Loop
   while (true) {
     while (window.isOpen()) {
-      sf::Event event;
+      sf::Event event{};
       while (window.pollEvent(event)) {
         if (event.type == sf::Event::Closed) {
           window.close();
