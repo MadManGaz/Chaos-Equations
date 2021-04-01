@@ -127,9 +127,9 @@ static sf::RectangleShape MakeBoundsShape(const sf::Text &text) {
 static std::string MakeEquationStr(double *params) {
   std::stringstream ss;
   bool isFirst = true;
-  SIGN_OR_SKIP(0, "x\u00b2");
-  SIGN_OR_SKIP(1, "y\u00b2");
-  SIGN_OR_SKIP(2, "t\u00b2");
+  SIGN_OR_SKIP(0, "x²");
+  SIGN_OR_SKIP(1, "y²");
+  SIGN_OR_SKIP(2, "t²");
   SIGN_OR_SKIP(3, "xy");
   SIGN_OR_SKIP(4, "xt");
   SIGN_OR_SKIP(5, "yt");
@@ -165,7 +165,7 @@ static void GenerateNew(sf::RenderWindow &window, double &t, double *params) {
 }
 
 static void MakeTText(double t) {
-  t_text.setCharacterSize(30);
+//  t_text.setCharacterSize(30);
   t_text.setFont(font);
   t_text.setString("t = " + std::to_string(t));
   t_text.setFillColor(sf::Color::White);
